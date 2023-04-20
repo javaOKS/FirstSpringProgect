@@ -14,11 +14,11 @@ public class Order {
     private BigDecimal cost;
     private List<Product> products;
     public void setCost(List<Product> products){
-        BigDecimal newCost = new BigDecimal("0");
+        BigDecimal sum = new BigDecimal("0");
         for (Product p:products) {
-            newCost = newCost.add(p.getCost());
+            sum = newCost.add(p.getCost());
         }
-        this.cost = newCost;
+        this.cost = sum;
     }
 
     protected boolean canEqual(final Object other) {
