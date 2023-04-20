@@ -1,12 +1,10 @@
 package com.example.FirstSpringProject.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-
+import lombok.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -14,5 +12,17 @@ public class Order {
     private int id;
     private LocalDateTime date;
     private BigDecimal cost;
+    private List<Product> products;
+    public void setCost(List<Product> products){
+        BigDecimal newCost = new BigDecimal("0");
+        for (Product p:products) {
+            newCost = newCost.add(p.getCost());
+        }
+        this.cost = newCost;
+    }
+
+    protected boolean canEqual(final Object other) {
+        return other instanceof Order;
+    }
 
 }
