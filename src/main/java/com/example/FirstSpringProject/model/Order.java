@@ -16,7 +16,7 @@ public class Order {
     public void setCost(List<Product> products){
         BigDecimal sum = new BigDecimal("0");
         for (Product p:products) {
-            sum = newCost.add(p.getCost());
+            sum = sum.add(p.getCost());
         }
         this.cost = sum;
     }
